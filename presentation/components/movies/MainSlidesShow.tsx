@@ -1,7 +1,8 @@
 import { Movie } from "@/infrastructure/interfaces/moviedb-response";
 import { useRef } from "react";
-import { Text, useWindowDimensions, View } from "react-native";
+import { useWindowDimensions, View } from "react-native";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
+import MoviePoster from "./MoviePoster";
 
 interface Props {
   movies: Movie[];
@@ -10,7 +11,7 @@ interface Props {
 export default function MainSlidesShow({ movies = [] }: Props) {
   const ref = useRef<ICarouselInstance>(null);
 
-  const width =  useWindowDimensions().width
+  const width = useWindowDimensions().width;
 
   return (
     <View style={{ height: 250, width: "100%" }}>
@@ -18,20 +19,24 @@ export default function MainSlidesShow({ movies = [] }: Props) {
         ref={ref}
         data={movies}
         renderItem={({ item }) => (
-            <Text className="">{item.title}</Text>
+          <MoviePoster
+            poster={item.poster_path}
+            id={item.id}
+            smallPoster={false}
+          />
         )}
         width={200}
-        height={350} 
+        height={350}
         style={{
-          width:width,
-          height:350,
-          justifyContent:'center',
-          alignItems:'center'
+          width: width,
+          height: 350,
+          justifyContent: "center",
+          alignItems: "center",
         }}
         mode="parallax"
         modeConfig={{
-          parallaxScrollingScale:0.9,
-          parallaxScrollingOffset:50
+          parallaxScrollingScale: 0.9,
+          parallaxScrollingOffset: 50,
         }}
         defaultIndex={1}
       />
