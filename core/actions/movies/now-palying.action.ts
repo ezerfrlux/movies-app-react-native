@@ -4,9 +4,8 @@ import { MovieDBMoviesResponse } from "@/infrastructure/interfaces/moviedb-respo
 export const nowPlayingAction = async() => {
   try {
     const {data} = await movieApi.get<MovieDBMoviesResponse>("/now_playing")
-    // console.log(JSON.stringify(data, null, 2));
 
-    return []
+    return data
   }catch(error){
     console.log(error);
     throw "Can't load now playing movies."
