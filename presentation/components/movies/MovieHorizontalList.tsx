@@ -1,4 +1,4 @@
-import { Movie } from "@/infrastructure/interfaces/moviedb-response";
+import { Result } from "@/infrastructure/interfaces/moviedb-response";
 import React, { useEffect, useRef } from "react";
 import {
   FlatList,
@@ -10,7 +10,7 @@ import {
 import MoviePoster from "./MoviePoster";
 
 interface Props {
-  movies: Movie[];
+  movies: Result[];
   title?: string;
   className?: string;
   loadNextPage?: () => void;
