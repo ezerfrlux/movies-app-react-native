@@ -6,6 +6,7 @@ import { MovieMapper } from "@/infrastructure/mapper/movie.mapper";
 export const getMovieByIdAction = async (id:number | string): Promise<CompleteMovie> => {
   try {
     const {data} = await movieApi.get<MovieDBMovieResponse>(`/${id}`)
+    console.log("pelicula -  http cargado");
     
     return MovieMapper.fromTheMovieDBToCompleteMovie(data)
   }catch(error){
