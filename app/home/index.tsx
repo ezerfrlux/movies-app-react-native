@@ -26,19 +26,22 @@ export default function HomeScreen() {
         <MainSlidesShow movies={nowPlayingQuery.data?.results ?? []} />
 
         <MovieHorizontalList
-          movies={popularQuery.data?.results ?? []}
+          movies={popularQuery.data?.pages.flatMap((page) => page.results) ?? []}
           title="Popular"
           className="mb-5"
+          loadNextPage={popularQuery.fetchNextPage}
         />
         <MovieHorizontalList
-          movies={topRatedQuery.data?.results ?? []}
+          movies={topRatedQuery.data?.pages.flatMap((page) => page.results) ?? []}
           title="Top Rated"
           className="mb-5"
+          loadNextPage={topRatedQuery.fetchNextPage}
         />
         <MovieHorizontalList
-          movies={upcomingQuery.data?.results ?? []}
+          movies={upcomingQuery.data?.pages.flatMap((page) => page.results) ?? []}
           title="Upcoming"
           className="mb-5"
+          loadNextPage={upcomingQuery.fetchNextPage}
         />
       </View>
     </ScrollView>
