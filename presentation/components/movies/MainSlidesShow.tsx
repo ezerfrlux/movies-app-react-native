@@ -1,11 +1,11 @@
-import { Movie } from "@/infrastructure/interfaces/moviedb-response";
+import { Result } from "@/infrastructure/interfaces/moviedb-response";
 import { useRef } from "react";
 import { useWindowDimensions, View } from "react-native";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 import MoviePoster from "./MoviePoster";
 
 interface Props {
-  movies: Movie[];
+  movies: Result[];
 }
 
 export default function MainSlidesShow({ movies = [] }: Props) {
